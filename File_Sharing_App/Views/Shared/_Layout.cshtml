@@ -1,0 +1,324 @@
+﻿@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    var reqCulture = Context.Features.Get<IRequestCultureFeature>();
+    var culture = reqCulture.RequestCulture.Culture.Name;
+    bool isArabic = culture == "ar-EG";
+}
+<!DOCTYPE html>
+<html lang="@(isArabic ?"ar":"en")">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - File Sharing App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" type="image/icon" href="~/assets/images/favicon.ico" />
+    <!-- Font Awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Slick slider -->
+
+    <link type="text/css" rel="stylesheet" href="~/css/assets.min.css" />
+    @*
+        <link href="~/assets/css/slick.css" rel="stylesheet">
+        <link href="~/assets/css/magnific-popup.css" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="~/style.css" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    *@
+
+
+
+
+
+    <!-- Gallery Lightbox -->
+    <!-- Skills Circle CSS  -->
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/circlebars@1.0.3/dist/circle.css">
+    <!-- Main Style -->
+    <!-- Fonts -->
+    <!-- Google Fonts Raleway -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,400i,500,500i,600,700" rel="stylesheet">
+    <!-- Google Fonts Open sans -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700,800" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/File_Sharing_App.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+
+
+    @if (isArabic)
+    {
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+        <link href="~/css/app.rtl.css" type="text/css" rel="stylesheet">
+    }
+</head>
+<body>
+    <nav class=" navbar navbar-expand-lg navbar-dark bg-success mb-5 row" dir="@(isArabic ?"rtl":"ltr")">
+        <h2 class=" col-4 mx-2"><a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@Localizer["File Sharing App"]</a></h2>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto col-5 headLink" id="myDIV">
+                <li class="nav-item @(Context.Request.Path.Value.ToLower()=="/home/index"||Context.Request.Path.Value.ToLower()=="/"?"activeLink":"")">
+                    <a asp-area="" asp-controller="Home" asp-action="Index">@Localizer["Home"]</a>
+                </li>
+                <li class="nav-item @(Context.Request.Path.Value.ToLower()=="/home/privacy"?"activeLink":"")">
+                    <a asp-area="" asp-controller="Home" asp-action="Privacy">@Localizer["Privacy"]</a>
+                </li>
+                <li class="nav-item @(Context.Request.Path.Value.ToLower()=="/uploads/browse"?"activeLink":"")">
+                    <a asp-area="" asp-controller="Uploads" asp-action="Browse">@Localizer["Browse"]</a>
+                </li>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item @(Context.Request.Path.Value.ToLower()=="/uploads/index"||Context.Request.Path.Value.ToLower()=="/uploads"?"activeLink":"")">
+                        <a asp-area="" asp-controller="Uploads" asp-action="Index">@Localizer["Uplaods"]</a>
+                    </li>
+                }
+                <li class="nav-item @(Context.Request.Path.Value.ToLower()=="/home/contact"?"activeLink":"")">
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">@Localizer["Contact"]</a>
+                </li>
+                <li class="nav-item @(Context.Request.Path.Value.ToLower()=="/home/about"?"activeLink":"")">
+                    <a asp-area="" asp-controller="Home" asp-action="About">@Localizer["About"]</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav col-3 headLink" style="float:right">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item dropdown">
+                        <a class="dropdown-toggle dropdown-cu" href="#" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@Localizer["Account"]</a>
+                        <div class="dropdown-menu menu-cu" aria-labelledby="navbarDropdown">
+                            <a asp-area="" asp-controller="Account" asp-action="Info">@User.Identity.Name</a>
+                            <br>
+                            @if(User.IsInRole(UserRoles.Admin))
+                            {
+                             <a asp-area="Admin" asp-controller="Home" asp-action="Index">Dashboard</a>
+                             <br>
+                            }
+
+                            <a asp-area="" asp-controller="Account" asp-action="LogOut">@Localizer["Logout"]</a>
+                        </div>
+                    </li>
+
+                }
+                else
+                {
+                    <li class="nav-item @(Context.Request.Path.Value.ToLower()=="/account/login"?"activeLink":"")">
+                        <a asp-area="" asp-controller="Account" asp-action="Login">@Localizer["Login"]</a>
+                    </li>
+
+                    <li class="nav-item @(Context.Request.Path.Value.ToLower()=="/account/register"?"activeLink":"")">
+                        <a asp-area="" asp-controller="Account" asp-action="Register">@Localizer["Register"]</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <main role="main" class="pb-3" onmousemove="wait()">
+            @if (TempData["massege"] != null)
+            {
+               
+                <h1 class="alert alert-success text-center" id="TempDatamsg">@TempData["massege"]</h1>
+            }
+            @if(TempData["Error"]!=null)
+            {
+                 <h1 class="alert alert-danger text-center" id="TempDatamsg">@TempData["Error"]</h1>
+            }
+            @RenderBody()
+        </main>
+    </div>
+    <footer id="mu-footer">
+        <div class="mu-footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="mu-single-footer">
+                            <img class="mu-footer-logo" src="~/assets/images/logo.png" alt="logo">
+                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus. </p>
+                            <div class="mu-social-media">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a class="mu-twitter" href="#"><i class="fa fa-twitter"></i></a>
+                                <a class="mu-pinterest" href="#"><i class="fa fa-pinterest-p"></i></a>
+                                <a class="mu-google-plus" href="#"><i class="fa fa-google-plus"></i></a>
+                                <a class="mu-youtube" href="#"><i class="fa fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="mu-single-footer">
+                            <h3>Twitter feed</h3>
+                            <ul class="list-unstyled">
+                                <li class="media">
+                                    <span class="fa fa-twitter"></span>
+                                    <div class="media-body">
+                                        <p><strong>File Sharing</strong> Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+                                        <a href="#">2 hours ago</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mu-single-footer">
+                            <h3>languages</h3>
+                            <ul class="mu-useful-links">
+                                <li>
+                                    <a href="~/Home/SetCulture?Lang=ar-EG&ReturnUrl=@Context.Request.Path.Value">العربية</a>
+
+                                </li>
+                                <li>
+                                    <a href="~/Home/SetCulture?Lang=en-US&ReturnUrl=@Context.Request.Path.Value">English</a>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="mu-single-footer">
+                            <h3>Useful link</h3>
+                            <ul class="mu-useful-links">
+                                <li><a href="#">Help Center</a></li>
+                                <li><a href="#">Download Center</a></li>
+                                <li><a href="#">User Account</a></li>
+                                <li><a href="#">Support Forum</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="mu-single-footer">
+                            <h3>Contact Information</h3>
+                            <ul class="list-unstyled">
+                                <li class="media">
+                                    <span class="fa fa-home"></span>
+                                    <div class="media-body">
+                                        <p>349 Main St, Deseronto, ON K0K 1X0, Canada</p>
+                                    </div>
+                                </li>
+                                <li class="media">
+                                    <span class="fa fa-phone"></span>
+                                    <div class="media-body">
+                                        <p>+00 123 456 789 00</p>
+                                        <p>+ 00 254 632 548 00</p>
+                                    </div>
+                                </li>
+                                <li class="media">
+                                    <span class="fa fa-envelope"></span>
+                                    <div class="media-body">
+                                        <p>support@bhero.com</p>
+                                        <p>help.behero@gmail.com</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mu-footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mu-footer-bottom-area">
+                            <p class="mu-copy-right">&copy; Copyright <a rel="nofollow" asp-controller="Home" asp-action="Privacy">File Sharing</a>. All right reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <!-- End footer -->
+        
+<script>
+        var TempDatamsg=document.getElementById("TempDatamsg");
+        
+        function wait(){
+            setTimeout(()=>{
+               $(TempDatamsg).fadeOut();
+            },4000);
+                }
+    </script>
+    <script>
+        // Add active class to the current button (highlight it)
+        var header = document.getElementById("myDIV");
+        var btns = header.getElementsByClassName("nav-item");
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].addEventListener("click", function() {
+            var current = document.getElementsByClassName("active2");
+            current[0].className = current[0].className.replace(" active2", "");
+            this.classList.add("active2");
+            var activeClass=this
+          });
+        }
+    </script>
+    <!-- JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <!-- Slick slider -->
+    <script type="text/javascript" src="~/assets/js/slick.min.js"></script>
+    <!-- Progress Bar -->
+    <script src="https://unpkg.com/circlebars@1.0.3/dist/circle.js"></script>
+    <!-- Filterable Gallery js -->
+    <script type="text/javascript" src="~/assets/js/jquery.filterizr.min.js"></script>
+    <!-- Gallery Lightbox -->
+    <script type="text/javascript" src="~/assets/js/jquery.magnific-popup.min.js"></script>
+    <!-- Counter js -->
+    <script type="text/javascript" src="~/assets/js/counter.js"></script>
+    <!-- Ajax contact form  -->
+    <script type="text/javascript" src="~/assets/js/app.js"></script>
+
+
+    <!-- Custom js -->
+    <script type="text/javascript" src="~/assets/js/custom.js"></script>
+
+    <!-- About us Skills Circle progress  -->
+    <script>
+        // First circle
+        new Circlebar({
+        element : "#circle-1",
+        type : "progress",
+          maxValue:  "90"
+        });
+
+        // Second circle
+        new Circlebar({
+        element : "#circle-2",
+        type : "progress",
+          maxValue:  "84"
+        });
+
+        // Third circle
+        new Circlebar({
+        element : "#circle-3",
+        type : "progress",
+          maxValue:  "60"
+        });
+
+        // Fourth circle
+        new Circlebar({
+        element : "#circle-4",
+        type : "progress",
+          maxValue:  "74"
+        });
+    </script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script>
+    <script>
+         $("img.lazyload").lazyload();
+        // $(document).ready(function ()
+        //     {
+        //         lazyload();
+        //     }
+        //);
+    </script>
+</body>
+</html>

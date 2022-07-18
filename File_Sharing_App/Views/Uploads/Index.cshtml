@@ -1,0 +1,73 @@
+﻿@model IEnumerable<File_Sharing_App.Models.UploadViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>My Uploads</h1>
+<p style="text-align:right">
+    <a asp-action="Create" class="btn btn-primary">Upload New</a>
+</p>
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>Perview</th>
+            <th>@Html.DisplayNameFor(model=>model.FileName)</th>
+            <th>@Html.DisplayNameFor(model=>model.Size)</th>
+            <th>@Html.DisplayNameFor(model=>model.ContentType)</th>
+            <th>@Html.DisplayNameFor(model=>model.DownloadCount)</th>
+            <th>@Html.DisplayNameFor(model=>model.UploadDate)</th>
+            <th></th>
+        <tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (item.ContentType.ToLower().StartsWith("image"))
+                    {
+                        <img src="~/Uploads/@item.FileName" alt="image" width="70" height="70" class="img-thumbnail"  loading="lazy"/>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(model=>item.OriginalFileName)
+
+                </td>
+                <td>
+                   @* @Html.DisplayFor(model=>item.Size)*@
+
+                    @{
+                        var size = item.Size / 1024;
+                        
+                        if(size<1024)
+                        {
+                            <span>@Math.Floor(size) KB</span>
+                        }
+                        else
+                        {
+                            <span>@Math.Floor(size/1024) MB</span>
+                        }
+
+
+                   }
+                </td>
+                <td>
+                    @Html.DisplayFor(model=>item.ContentType)
+                </td>
+                  <td>
+                    @Html.DisplayFor(model=>item.DownloadCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(model=>item.UploadDate)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete","Delete",new {id=item.FileName})
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

@@ -1,0 +1,59 @@
+﻿<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="card mb-3 col-md-12">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        @if (item.ContentType.ToLower().StartsWith("image"))
+                        {
+                            <img data-src="/Uploads/@item.FileName" class="card-img lazyload" alt="...">
+                        }
+
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-5">
+
+                                    <h5 class="card-title">@item.OriginalFileName</h5>
+                                    <br>
+                                    <small class="text-muted">@item.UploadDate</small>
+                                </div>
+                                <div class="col-4">
+
+                                    <p class="card-text">
+                                        
+                                       
+                                        @{
+                                            var size = item.Size / 1024;
+
+                                            if (size < 1024)
+                                            {
+                                                <span>Size :@Math.Floor(size) KB</span>
+                                            }
+                                            else
+                                            {
+                                                <span>Size :@Math.Floor(size/1024) MB</span>
+                                            }
+
+
+                                        }
+                                    </p>
+                                </div>
+                                <div class="col-3">
+                                    <strong>
+                                        Downloads : @item.DownloadCount
+                                    </strong>
+                                </div>
+                            </div>
+                            <div style="    text-align: right">
+                                <a asp-action="Download" asp-controller="Uploads" asp-route-id="@item.FileName" class="btn btn-success downbtn">Download</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

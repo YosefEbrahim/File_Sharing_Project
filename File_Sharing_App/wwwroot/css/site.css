@@ -1,0 +1,90 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+.card-img {
+    max-width: 370px;
+    min-width: 370px;
+    max-height: 370px;
+    min-height: 370px;
+}
+.downbtn {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+}
+
+.img-preview {
+    width: 70px;
+    height: 70px;
+}
+.nav-item a {
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+}
+.activeLink {
+    background-color: white;
+    border-radius: 20px;
+    
+}
+    .activeLink a {
+        color: #00a0ff;
+    }
+h1, h2,h4 {
+    color: #00a0ff;
+}
+body
+{
+    margin:0
+}
+.headLink .nav-item a:hover {
+    background-color: #d6d6d685;
+    border-radius: 20px;
+    padding: 0px 10px;
+    color:white;
+}
+main
+{
+    margin-bottom:20px;
+    min-height:300px;
+}
+footer {
+    margin-top: 20px;
+}
+.mu-single-footer ul li {
+    border-bottom: 1px solid #03f887;
+}
+.mu-social-media {
+    border-top: 1px solid #03f887;
+    
+}
+.mu-footer-top {
+    background-color: #198754;
+}
+.mu-social-media a i{
+    color:white;
+}
+
+.dropdown-cu{ 
+
+   color: white !important
+}
+.menu-cu {
+    background-color: rgb(25, 135, 84) !important;
+    padding: 10px !important;
+}

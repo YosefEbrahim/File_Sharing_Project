@@ -1,0 +1,31 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "9e499f04-d672-4628-84e4-ea07a0cfa254": {
+      "ProjectGuid": "9e499f04-d672-4628-84e4-ea07a0cfa254",
+      "DisplayName": "File_Sharing_App",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "d511366d-5086-4276-bb5f-842f76f075b5": {
+      "ProjectGuid": "d511366d-5086-4276-bb5f-842f76f075b5",
+      "DisplayName": "FileSharing.Reports",
+      "ColorIndex": 1
+    },
+    "87c98751-0682-43bf-951d-2042e4afe892": {
+      "ProjectGuid": "87c98751-0682-43bf-951d-2042e4afe892",
+      "DisplayName": "FileSharingReports",
+      "ColorIndex": 2
+    },
+    "21b19472-55dc-4bd5-b912-526b2a5625c8": {
+      "ProjectGuid": "21b19472-55dc-4bd5-b912-526b2a5625c8",
+      "DisplayName": "FileSharingReport",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}

@@ -1,0 +1,63 @@
+﻿@model File_Sharing_App.Models.LoginViewModel
+@inject IViewLocalizer  Localizer
+@{
+    ViewData["Title"] = @Localizer["Title"];
+}
+<section id="mu-contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-contact-area" style="padding-top:10px">
+                    <!-- Title -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mu-title">
+                                <h1> @Localizer["Title"]</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Start Contact Content -->
+                    <div class="mu-contact-content">
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <div class="mu-contact-form-area">
+                                    <div id="form-messages"></div>
+                                    <form asp-action="Login" asp-route-returnUrl="@Context.Request.Query["returnUrl"]">
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <div class="form-group">
+                                            @*<label class="control-label">@Localizer["Email"]</label>*@
+                                            <input type="email" asp-for="Email" class="form-control" placeholder="@Localizer["Email"]">
+                                            <span asp-validation-for="Email" class="text-danger"></span>
+                                        </div>
+                                        <br />
+                                        <br />
+                                        <div class="form-group">
+                                           @* <label class="control-label">@Localizer["Password"]</label>*@
+                                            <input asp-for="Password" class="form-control" type="password"  placeholder="@Localizer["Password"]"/>
+                                            <span asp-validation-for="Password" class="text-danger"></span>
+                                        </div>
+                                        <button type="submit" class="mu-send-msg-btn"><span>@Localizer["Submit"]</span></button>
+                                    </form>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <div class="row pt-3 justify-content-md-center">
+                            <div class="col-12">
+                                <a class="btn btn-outline-primary" asp-action="ExtarnalLogin" asp-route-provider="Facebook" asp-controller="Account">Login With Facebook</a>
+                             <a class="btn btn-outline-danger" asp-action="ExtarnalLogin" asp-route-provider="Google" asp-controller="Account">Login With Google</a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 pt-3">
+                         <a  asp-action="ForgetPassword" asp-controller="Account">@Localizer["ForgetPassword"]</a>
+                        </div>
+
+                    </div>
+                    <!-- End Contact Content -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,71 @@
+﻿@using Microsoft.Extensions.Localization
+@model CurrentUserViewModel
+@inject IViewLocalizer localizer
+@{
+    ViewData["Title"] = "Info";
+}
+@if(!ViewContext.ModelState.IsValid)
+{
+<div asp-validation-summary="ModelOnly" class="text-danger alert alert-danger"></div>    
+}
+
+
+<section id="mu-contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-contact-area" style="padding-top:10px">
+                    <!-- Title -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mu-title">
+                                <h1>@localizer["InfoTitle"]</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Start Contact Content -->
+                    <div class="mu-contact-content">
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <div class="mu-contact-form-area">
+                                    <div id="form-messages"></div>
+                                    <form asp-action="Info" asp-controller="Account" method="post">
+                                        <div class="form-group">
+                                            <input type="text" asp-for="FristName" class="form-control" placeholder="@localizer["FristName"]">
+                                            <span asp-validation-for="FristName" class="text-danger"></span>
+                                        </div>
+                                        <br />
+                                        <div class="form-group">
+                                            <input type="text" asp-for="LastName" class="form-control" placeholder="@localizer["LastName"]">
+                                            <span asp-validation-for="LastName" class="text-danger"></span>
+                                        </div>
+                                        <br />
+                                        <div class="form-group">
+                                            <input type="email" asp-for="Email" class="form-control" placeholder="@localizer["Email"]" readonly>
+                                            <span asp-validation-for="Email" class="text-danger"></span>
+                                        </div>
+                                        <button type="submit" class="mu-send-msg-btn"><span>@localizer["Submit"]</span></button>
+                                    </form>
+
+  
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- End Contact Content -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@if(Model.HasPassword)
+{
+    <partial name="_ChangePasswordPartial" model="new ChangePasswordViewModel()" />
+}
+else
+{
+<partial name="_AddPasswordPartial" model="new AddPasswordViewModel()" />    
+}

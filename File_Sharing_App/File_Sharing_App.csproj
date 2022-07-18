@@ -1,0 +1,349 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="NewFolder1\**" />
+    <Content Remove="NewFolder1\**" />
+    <EmbeddedResource Remove="NewFolder1\**" />
+    <None Remove="NewFolder1\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
+    <PackageReference Include="ClosedXML" Version="0.96.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="6.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="6.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.jQuery.Unobtrusive.Validation" Version="3.2.12" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.7" />
+    <PackageReference Include="NETCore.MailKit" Version="2.1.0" />
+    <PackageReference Include="Rotativa.AspNetCore" Version="1.2.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\Views\Account\Info.Designer.cs">
+      <DependentUpon>Info.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Resources\Views\Account\Login.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Login.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Account\ResetPassword.Designer.cs">
+      <DependentUpon>ResetPassword.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Resources\Views\Account\Register.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Register.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Home\Index.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Index.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Shared\_Layout.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>_Layout.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Views\Account\ForgetPassword.ar.resx">
+      <LastGenOutput>ForgetPassword - Copy.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Account\Info.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Account\Info.resx">
+      <LastGenOutput>Info.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Account\ForgetPassword.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Account\Login.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Account\Login.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Login.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Account\ResetPassword .ar.resx">
+      <LastGenOutput>ResetPassword .ar.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Account\ResetPassword.resx">
+      <LastGenOutput>ResetPassword.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Account\Register.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Account\Register.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Register.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Home\Index.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Home\Index.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Shared\_Layout.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>_Layout.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\_SharedResource.ar.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\_SharedResource.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="wwwroot\lib\microsoft\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Admin\dist\css\adminlte.css.map" />
+    <None Include="wwwroot\Admin\dist\css\adminlte.min.css.map" />
+    <None Include="wwwroot\Admin\dist\css\alt\adminlte.components.css.map" />
+    <None Include="wwwroot\Admin\dist\css\alt\adminlte.components.min.css.map" />
+    <None Include="wwwroot\Admin\dist\css\alt\adminlte.core.css.map" />
+    <None Include="wwwroot\Admin\dist\css\alt\adminlte.core.min.css.map" />
+    <None Include="wwwroot\Admin\dist\css\alt\adminlte.extra-components.css.map" />
+    <None Include="wwwroot\Admin\dist\css\alt\adminlte.extra-components.min.css.map" />
+    <None Include="wwwroot\Admin\dist\css\alt\adminlte.light.css.map" />
+    <None Include="wwwroot\Admin\dist\css\alt\adminlte.light.min.css.map" />
+    <None Include="wwwroot\Admin\dist\css\alt\adminlte.pages.css.map" />
+    <None Include="wwwroot\Admin\dist\css\alt\adminlte.pages.min.css.map" />
+    <None Include="wwwroot\Admin\dist\css\alt\adminlte.plugins.css.map" />
+    <None Include="wwwroot\Admin\dist\css\alt\adminlte.plugins.min.css.map" />
+    <None Include="wwwroot\Admin\dist\js\adminlte.js" />
+    <None Include="wwwroot\Admin\dist\js\adminlte.js.map" />
+    <None Include="wwwroot\Admin\dist\js\adminlte.min.js" />
+    <None Include="wwwroot\Admin\dist\js\adminlte.min.js.map" />
+    <None Include="wwwroot\Admin\dist\js\demo.js" />
+    <None Include="wwwroot\Admin\dist\js\pages\dashboard.js" />
+    <None Include="wwwroot\Admin\dist\js\pages\dashboard2.js" />
+    <None Include="wwwroot\Admin\dist\js\pages\dashboard3.js" />
+    <None Include="wwwroot\Admin\plugins\bootstrap\js\bootstrap.bundle.js" />
+    <None Include="wwwroot\Admin\plugins\bootstrap\js\bootstrap.bundle.js.map" />
+    <None Include="wwwroot\Admin\plugins\bootstrap\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\Admin\plugins\bootstrap\js\bootstrap.bundle.min.js.map" />
+    <None Include="wwwroot\Admin\plugins\bootstrap\js\bootstrap.js" />
+    <None Include="wwwroot\Admin\plugins\bootstrap\js\bootstrap.js.map" />
+    <None Include="wwwroot\Admin\plugins\bootstrap\js\bootstrap.min.js" />
+    <None Include="wwwroot\Admin\plugins\bootstrap\js\bootstrap.min.js.map" />
+    <None Include="wwwroot\Admin\plugins\datatables-bs4\js\dataTables.bootstrap4.js" />
+    <None Include="wwwroot\Admin\plugins\datatables-bs4\js\dataTables.bootstrap4.min.js" />
+    <None Include="wwwroot\Admin\plugins\datatables-buttons\js\buttons.bootstrap4.js" />
+    <None Include="wwwroot\Admin\plugins\datatables-buttons\js\buttons.bootstrap4.min.js" />
+    <None Include="wwwroot\Admin\plugins\datatables-buttons\js\buttons.colVis.js" />
+    <None Include="wwwroot\Admin\plugins\datatables-buttons\js\buttons.colVis.min.js" />
+    <None Include="wwwroot\Admin\plugins\datatables-buttons\js\buttons.flash.js" />
+    <None Include="wwwroot\Admin\plugins\datatables-buttons\js\buttons.flash.min.js" />
+    <None Include="wwwroot\Admin\plugins\datatables-buttons\js\buttons.html5.js" />
+    <None Include="wwwroot\Admin\plugins\datatables-buttons\js\buttons.html5.min.js" />
+    <None Include="wwwroot\Admin\plugins\datatables-buttons\js\buttons.print.js" />
+    <None Include="wwwroot\Admin\plugins\datatables-buttons\js\buttons.print.min.js" />
+    <None Include="wwwroot\Admin\plugins\datatables-buttons\js\dataTables.buttons.js" />
+    <None Include="wwwroot\Admin\plugins\datatables-buttons\js\dataTables.buttons.min.js" />
+    <None Include="wwwroot\Admin\plugins\datatables-responsive\js\dataTables.responsive.js" />
+    <None Include="wwwroot\Admin\plugins\datatables-responsive\js\dataTables.responsive.min.js" />
+    <None Include="wwwroot\Admin\plugins\datatables-responsive\js\responsive.bootstrap4.js" />
+    <None Include="wwwroot\Admin\plugins\datatables-responsive\js\responsive.bootstrap4.min.js" />
+    <None Include="wwwroot\Admin\plugins\datatables\jquery.dataTables.js" />
+    <None Include="wwwroot\Admin\plugins\datatables\jquery.dataTables.min.js" />
+    <None Include="wwwroot\Admin\plugins\fontawesome-free\webfonts\fa-brands-400.svg" />
+    <None Include="wwwroot\Admin\plugins\fontawesome-free\webfonts\fa-brands-400.woff2" />
+    <None Include="wwwroot\Admin\plugins\fontawesome-free\webfonts\fa-regular-400.svg" />
+    <None Include="wwwroot\Admin\plugins\fontawesome-free\webfonts\fa-regular-400.woff2" />
+    <None Include="wwwroot\Admin\plugins\fontawesome-free\webfonts\fa-solid-900.svg" />
+    <None Include="wwwroot\Admin\plugins\fontawesome-free\webfonts\fa-solid-900.woff2" />
+    <None Include="wwwroot\Admin\plugins\jquery\jquery.js" />
+    <None Include="wwwroot\Admin\plugins\jquery\jquery.min.js" />
+    <None Include="wwwroot\Admin\plugins\jquery\jquery.min.map" />
+    <None Include="wwwroot\Admin\plugins\jquery\jquery.slim.js" />
+    <None Include="wwwroot\Admin\plugins\jquery\jquery.slim.min.js" />
+    <None Include="wwwroot\Admin\plugins\jquery\jquery.slim.min.map" />
+    <None Include="wwwroot\Admin\plugins\jszip\jszip.js" />
+    <None Include="wwwroot\Admin\plugins\jszip\jszip.min.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locales.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locales.min.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locales.min.js.map" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\af.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\ar-dz.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\ar-kw.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\ar-ly.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\ar-ma.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\ar-sa.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\ar-tn.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\ar.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\az.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\be.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\bg.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\bm.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\bn-bd.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\bn.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\bo.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\br.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\bs.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\ca.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\cs.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\cv.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\cy.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\da.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\de-at.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\de-ch.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\de.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\dv.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\el.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\en-au.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\en-ca.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\en-gb.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\en-ie.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\en-il.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\en-in.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\en-nz.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\en-SG.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\eo.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\es-do.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\es-mx.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\es-us.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\es.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\et.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\eu.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\fa.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\fi.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\fil.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\fo.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\fr-ca.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\fr-ch.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\fr.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\fy.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\ga.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\gd.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\gl.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\gom-deva.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\gom-latn.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\gu.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\he.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\hi.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\hr.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\hu.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\hy-am.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\id.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\is.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\it-ch.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\it.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\ja.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\jv.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\ka.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\kk.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\km.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\kn.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\ko.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\ku.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\ky.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\lb.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\lo.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\lt.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\lv.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\me.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\mi.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\mk.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\ml.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\mn.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\mr.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\ms-my.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\ms.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\mt.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\my.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\nb.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\ne.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\nl-be.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\nl.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\nn.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\oc-lnc.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\pa-in.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\pl.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\pt-br.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\pt.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\ro.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\ru.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\sd.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\se.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\si.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\sk.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\sl.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\sq.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\sr-cyrl.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\sr.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\ss.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\sv.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\sw.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\ta.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\te.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\tet.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\tg.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\th.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\tk.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\tl-ph.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\tlh.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\tr.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\tzl.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\tzm-latn.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\tzm.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\ug-cn.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\uk.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\ur.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\uz-latn.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\uz.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\vi.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\x-pseudo.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\yo.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\zh-cn.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\zh-hk.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\zh-mo.js" />
+    <None Include="wwwroot\Admin\plugins\moment\locale\zh-tw.js" />
+    <None Include="wwwroot\Admin\plugins\moment\moment-with-locales.js" />
+    <None Include="wwwroot\Admin\plugins\moment\moment-with-locales.min.js" />
+    <None Include="wwwroot\Admin\plugins\moment\moment-with-locales.min.js.map" />
+    <None Include="wwwroot\Admin\plugins\moment\moment.min.js" />
+    <None Include="wwwroot\Admin\plugins\moment\moment.min.js.map" />
+    <None Include="wwwroot\Admin\plugins\pdfmake\pdfmake.js" />
+    <None Include="wwwroot\Admin\plugins\pdfmake\pdfmake.js.map" />
+    <None Include="wwwroot\Admin\plugins\pdfmake\pdfmake.min.js" />
+    <None Include="wwwroot\Admin\plugins\pdfmake\pdfmake.min.js.map" />
+    <None Include="wwwroot\Admin\plugins\pdfmake\vfs_fonts.js" />
+    <None Include="wwwroot\Rotativa\wkhtmltoimage.exe" />
+    <None Include="wwwroot\Rotativa\wkhtmltopdf.exe" />
+  </ItemGroup>
+
+</Project>

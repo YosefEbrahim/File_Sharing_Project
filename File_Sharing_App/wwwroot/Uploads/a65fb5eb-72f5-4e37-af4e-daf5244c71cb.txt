@@ -1,0 +1,32 @@
+File Sharing Project
+*********************
+Tables 
+* Users
+	- User Id
+	- Email
+	- Password
+* Uploads
+	- Id
+	- FileName
+	- ContentType
+	- Size
+	- UserId
+**********************
+Dashboard
+* My Uploads
+	>> Display Uploads List By UserId.
+	>> CRUD >> Create, Read, Update, Delete
+***********************
+Visitor
+* Login
+* Register
+* Display Uploads
+* Download
+* Search Uploads 
+
+**********************
+Authentication & Authorization
+	>> ASP.Net Identity Core.
+
+************************
+
